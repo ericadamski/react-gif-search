@@ -5680,9 +5680,9 @@ react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
-react-gif-search@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/react-gif-search/-/react-gif-search-0.0.1.tgz#328592b0b74f45f5fd1185b795af90a8aa4679e3"
+react-gif-search@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-gif-search/-/react-gif-search-0.0.2.tgz#6478f5a4960346ad7f163dbf59389b70b1735da8"
   dependencies:
     copy-to-clipboard "^3.0.8"
     dotenv "^5.0.1"
