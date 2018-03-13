@@ -1,0 +1,24 @@
+{
+  "name": "react-gif-search-website",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://ericadamski.github.io/react-gif-search",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-gif-search": "^0.0.1",
+    "react-scripts": "1.1.1",
+    "styled-components": "^3.2.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
+  }
+}
