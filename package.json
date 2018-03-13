@@ -30,6 +30,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "copy-to-clipboard": "^3.0.8",
     "dotenv": "^5.0.1",
     "downshift": "^1.30.0",
     "prop-types": "^15.6.0",

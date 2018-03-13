@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import unfetch from "unfetch";
 import Downshift from "downshift";
 import { last } from "ramda";
+import copy from "copy-to-clipboard";
 
 import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
@@ -15,7 +16,14 @@ import "rxjs/add/operator/do";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/throttleTime";
 
-import { Container, Search, Items, Item, Empty } from "./index.styled";
+import {
+  Container,
+  Search,
+  Items,
+  Item,
+  Empty,
+  CopiedMessage
+} from "./index.styled";
 
 const URI = `http://api.giphy.com/`;
 
@@ -92,8 +100,16 @@ export default class GifSearch extends Component {
     term.length > 0 && this.search$.next(term);
   }
 
+  flash({ title, og }) {
+    const { url } = og;
+
+    this.setState({ name: title, url }, () =>
+      setTimeout(() => this.setState({ name: undefined, url: undefined }), 2500)
+    );
+  }
+
   render() {
-    const { images } = this.state;
+    const { images, name, url } = this.state;
 
     return (
       <Downshift onInputValueChange={this.search.bind(this)}>
@@ -111,16 +127,20 @@ export default class GifSearch extends Component {
               hidden={images.length < 1}
               innerRef={n => (this.gifList = n)}
             >
-              {images.map(image => (
+              {images.map((image, index) => (
                 <Item
-                  {...getItemProps({ item: image })}
-                  key={image.id}
-                  title={image.title}
-                  source={image.display.url}
+                  {...getItemProps({
+                    item: image,
+                    key: image.id,
+                    title: image.title,
+                    source: image.display.url
+                  })}
+                  onClick={() => (copy(image.og.url), this.flash(image))}
                 />
               ))}
             </Items>
             <Empty hidden={images.length > 1}>Nothing Found 😭</Empty>
+            {name && url && <CopiedMessage name={name} url={url} />}
           </Container>
         )}
       </Downshift>

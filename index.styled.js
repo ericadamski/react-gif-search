@@ -9,12 +9,14 @@ const colors = {
 };
 
 export const Container = styled.div`
+  position: relative;
   width: 35rem;
   height: 40rem;
   background-color: ${colors.black};
   border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 
 export const Search = styled.input.attrs({ type: "text" })`
@@ -70,8 +72,50 @@ const Gif = styled.img`
   min-height: 100%;
 `;
 
-export const Item = ({ source }) => (
-  <ItemWrapper>
+const MessageContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  background-color: ${colors.black};
+  opacity: 0.8;
+  color: ${colors.white};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+`;
+
+const Message = styled.p`
+  margin: 0;
+  font-size: ${props => (props.small ? 1 : 1.75)}rem;
+  opacity: 1;
+`;
+
+const Overlay = styled.div`
+  position: absolute:
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.4;
+`;
+
+export const Item = ({ source, title, selected, onClick }) => (
+  <ItemWrapper onClick={onClick}>
+    {selected && <Overlay>{title}</Overlay>}
     <Gif src={source} />
   </ItemWrapper>
+);
+
+export const CopiedMessage = ({ name, url }) => (
+  <MessageContainer>
+    <Message>{`🎉Copied GIF ${name}!🔥`}</Message>
+    <Message small>{url}</Message>
+  </MessageContainer>
 );
