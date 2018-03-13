@@ -40,7 +40,6 @@ export const Items = styled.ul`
   flex-wrap: wrap;
   flex-basis: 1;
   width: calc(100% - 3rem);
-  height: calc(100% - 1.5rem);
   list-style: none;
   overflow-x: hidden;
   overflow-y: scroll;

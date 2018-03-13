@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import unfetch from "unfetch";
 import Downshift from "downshift";
+import { last } from "ramda";
 
 import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
@@ -8,9 +9,11 @@ import "rxjs/add/observable/fromPromise";
 import "rxjs/add/observable/fromEvent";
 import "rxjs/add/operator/switchMap";
 import "rxjs/add/operator/switch";
+import "rxjs/add/operator/filter";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/debounceTime";
+import "rxjs/add/operator/throttleTime";
 
 import { Container, Search, Items, Item, Empty } from "./index.styled";
 
@@ -47,9 +50,21 @@ export default class GifSearch extends Component {
       .do(term => console.log(`Searching for ${term}...`))
       .subscribe(term => this.extract(term, search(term)));
 
-    Observable.fromEvent(this.gifList, "scroll").subscribe(event =>
-      console.log(event)
-    );
+    Observable.fromEvent(this.gifList, "scroll")
+      .map(
+        () =>
+          Math.round(
+            last(this.gifList.childNodes).getBoundingClientRect().bottom
+          ) -
+            this.gifList.clientHeight <=
+          Math.round(this.gifList.getBoundingClientRect().bottom)
+      )
+      .filter(canScroll => canScroll)
+      .throttleTime(500)
+      .map(() => this.state.term)
+      .subscribe(term =>
+        this.extract(term, search(term, this.state.pagination.offset + 25))
+      );
   }
 
   extract(term, source$) {
