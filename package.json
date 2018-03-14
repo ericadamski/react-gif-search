@@ -1,6 +1,6 @@
 {
   "name": "react-gif-search",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple bit of react to query giphy.com ",
   "main": "dist/index.js",
   "repository": "git@github.com:ericadamski/react-gif-search.git",
@@ -33,7 +33,7 @@
     "copy-to-clipboard": "^3.0.8",
     "dotenv": "^5.0.1",
     "downshift": "^1.30.0",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
     "rxjs": "^5.5.6",
     "unfetch": "^3.0.0"

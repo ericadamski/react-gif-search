@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import unfetch from "unfetch";
 import Downshift from "downshift";
 import { last } from "ramda";
+import PropTypes from "prop-types";
 import copy from "copy-to-clipboard";
 
 import { Observable } from "rxjs/Observable";
@@ -52,10 +53,18 @@ export default class GifSearch extends Component {
   state = { term: "", pagination: {}, images: [] };
   search$ = new Subject();
 
+  static propTypes = {
+    query: PropTypes.string,
+    onDidSearch: PropTypes.func
+  };
+
   componentDidMount() {
     this.search$
       .debounceTime(250)
-      .do(term => console.log(`Searching for ${term}...`))
+      .do(term => {
+        console.log(`Searching for ${term}...`);
+        this.props.onDidSearch && this.props.onDidSearch(term);
+      })
       .subscribe(term => this.extract(term, search(term)));
 
     Observable.fromEvent(this.gifList, "scroll")
@@ -73,8 +82,10 @@ export default class GifSearch extends Component {
       .subscribe(term =>
         this.extract(term, search(term, this.state.pagination.offset + 25))
       );
+  }
 
-    this.search(this.props.query || "");
+  componentWillReceiveProps({ query }) {
+    query !== this.state.term && this.search(query || "");
   }
 
   extract(term, source$) {
@@ -111,10 +122,10 @@ export default class GifSearch extends Component {
   }
 
   render() {
-    const { images, name, url } = this.state;
+    const { term, images, name, url } = this.state;
 
     return (
-      <Downshift onInputValueChange={this.search.bind(this)}>
+      <Downshift inputValue={term} onInputValueChange={this.search.bind(this)}>
         {({
           getInputProps,
           getRootProps,
