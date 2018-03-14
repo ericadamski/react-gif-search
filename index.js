@@ -25,7 +25,7 @@ import {
   CopiedMessage
 } from "./index.styled";
 
-const URI = `http://api.giphy.com/`;
+const URI = `https://api.giphy.com/`;
 
 function search(term, offset) {
   const searchUri = `${URI}v1/gifs/search?api_key=${
@@ -73,6 +73,8 @@ export default class GifSearch extends Component {
       .subscribe(term =>
         this.extract(term, search(term, this.state.pagination.offset + 25))
       );
+
+    this.search(this.props.query || "");
   }
 
   extract(term, source$) {
