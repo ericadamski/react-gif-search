@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { injectGlobal } from "styled-components";
 
 const colors = {
   black: "#283d3b",
@@ -8,7 +8,12 @@ const colors = {
   white: "#edddd4"
 };
 
+injectGlobal`
+  @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+`;
+
 export const Container = styled.div`
+  font-family: "Roboto", sans-serif;
   position: relative;
   width: 35rem;
   height: 40rem;
@@ -32,6 +37,7 @@ export const Search = styled.input.attrs({ type: "text" })`
   margin: 1.5rem;
   border-bottom: 0.2rem solid ${colors.blue};
   color: ${colors.white};
+  outline: none;
 `;
 
 export const Items = styled.ul`

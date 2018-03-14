@@ -1,6 +1,6 @@
 {
   "name": "react-gif-search",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple bit of react to query giphy.com ",
   "main": "dist/index.js",
   "repository": "git@github.com:ericadamski/react-gif-search.git",
