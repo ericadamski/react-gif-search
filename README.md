@@ -4,7 +4,7 @@
 
 # Usage
 
-[![Edit React Gif Search - Example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/048
+[![Edit React Gif Search - Example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/048j8r809l)
 
 ```javascript
 import React from "react";
