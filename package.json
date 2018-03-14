@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://ericadamski.github.io/react-gif-search",
   "dependencies": {
+    "qs": "^6.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-gif-search": "0.0.2",
