@@ -14,6 +14,8 @@ class App extends Component {
   render() {
     const { query } = this.state;
 
+    console.log(query);
+
     return (
       <Page>
         <Title>Search for some gifs!</Title>
