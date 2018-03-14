@@ -122,10 +122,10 @@ export default class GifSearch extends Component {
   }
 
   render() {
-    const { term, images, name, url } = this.state;
+    const { images, name, url } = this.state;
 
     return (
-      <Downshift inputValue={term} onInputValueChange={this.search.bind(this)}>
+      <Downshift onInputValueChange={this.search.bind(this)}>
         {({
           getInputProps,
           getRootProps,
