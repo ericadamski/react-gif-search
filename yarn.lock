@@ -5516,7 +5516,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
@@ -5680,14 +5680,14 @@ react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
-react-gif-search@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/react-gif-search/-/react-gif-search-0.0.3.tgz#ae7530a64498882051a09be657cc68b90aab8d17"
+react-gif-search@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-gif-search/-/react-gif-search-0.0.6.tgz#90f2a753195e823c6e26bc2099a4db4c185350c9"
   dependencies:
     copy-to-clipboard "^3.0.8"
     dotenv "^5.0.1"
     downshift "^1.30.0"
-    prop-types "^15.6.0"
+    prop-types "^15.6.1"
     ramda "^0.25.0"
     rxjs "^5.5.6"
     unfetch "^3.0.0"
